@@ -11,23 +11,34 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.chat.ui.theme.ChatTheme
+import com.google.firebase.Firebase
+import com.google.firebase.database.database
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
+        setContentView(R.layout.activity_main)
+        val database = Firebase.database
+        val myRef = database.getReference("messages")
+        val myInt = database.getReference("numbers")
+
+
+        myRef.setValue("Hello, World!")
+        myInt.setValue(5)
+/*        setContent {
             ChatTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                  //  Greeting("Android")
                 }
             }
-        }
+        }*/
     }
 }
+/*
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
@@ -43,4 +54,4 @@ fun GreetingPreview() {
     ChatTheme {
         Greeting("Android")
     }
-}
+}*/
